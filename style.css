@@ -1,4 +1,37 @@
-html {
-  height: 100%;
-  width: 100%;
+function isValidCPF(cpf) {
+  // Implemente a validação do CPF aqui
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  // Verifica se o usuário está autenticado
+  if (!userIsAuthenticated()) {
+    alert('Você precisa estar autenticado para realizar um cadastro.');
+    return;
+  }
+
+  const cpf = document.getElementById('cpf').value;
+  const phone = document.getElementById('phone').value;
+
+  // Valida o CPF
+  if (!isValidCPF(cpf)) {
+    alert('CPF inválido.');
+    return;
+  }
+
+  // Valida o número de telefone
+  if (phone.length === 0) {
+    alert('É necessário fornecer pelo menos um número de telefone.');
+    return;
+  }
+
+  // Todos os campos obrigatórios estão preenchidos corretamente
+  alert('Cadastro realizado com sucesso!');
+}
+
+function userIsAuthenticated() {
+  // Verifique a autenticação do usuário aqui
+}
+
+document.getElementById('registration-form').addEventListener('submit', handleSubmit);
